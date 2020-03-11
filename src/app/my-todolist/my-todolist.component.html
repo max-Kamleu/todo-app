@@ -1,0 +1,24 @@
+
+<div class="container bg-ligth pb-5">
+    <div>
+        <h1 class="text-center">TODO LIST</h1>
+      
+        <input type="number" #taskid class="form-control" placeholder="id">
+        
+        <input type="text" #taskname class="form-control" name="name" id="name" #name placeholder="Name">
+        <input type="text" #taskactivity class="form-control" name="activity" id="activity" #activity placeholder="activity">
+        <input type="date" #taskdate class="form-control" name="date" id="date" #date placeholder="date">
+        <br>
+        <button class="btn btn-primary btn-sm mr-3" value="Add Task" #submit (click) = "addTask(taskid,taskname)">Add Task</button>
+        <!-- <button class="btn btn-success btn-sm">Update Task</button> -->
+        <hr>
+    </div>
+    <div *ngIf="tasks.length > 0 else noTask">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let task of tasks">{{task.id}}:{{task.name}} <button class="btn btn-primary float-right">v</button>
+                 <button (click)="taskDelete(task)" class="float-right btn btn-danger">X</button>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noTask>No tasks matchs, please Add it ...</ng-template>
+</div>
